@@ -66,5 +66,8 @@ foreach ($vmname in $Namelist) {
     #Enable "Guest Services" so that we can copy files to the vm without network...
     $vm | Enable-VMIntegrationService -Name "Guest Service Interface"
     $vm | Set-VM -MemoryMinimumBytes 64MB -MemoryMaximumBytes 2GB
-    if ($Start) { $vm | Start-VM }
+    if ($Start) {
+	"  Starting the VM..."
+	$vm | Start-VM
+    }
 }
