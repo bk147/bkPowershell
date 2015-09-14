@@ -9,8 +9,12 @@ foreach ($vmname in $VMList) {
     if ($vm) {
         $disklist = $vm | Get-VMHardDiskDrive
         foreach ($disk in $disklist) {
-            "Removing '$($disk.Path)'..."
-            $null = Remove-Item $disk.Path
+            if (Test-Path $disk.Path) {
+                "Removing '$($disk.Path)'..."
+                $null = Remove-Item $disk.Path
+            } else {
+                Write-Warning "Disk '$($disk.Path)' already deleted..."
+            }
         }
         $vm | Remove-VM -Force
     } else {
