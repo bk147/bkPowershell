@@ -1,4 +1,7 @@
-﻿param (
+﻿#
+# We should turn this into a module...
+#
+param (
     [parameter(Mandatory)][string[]] $Namelist,
 #    [string] $Template = 'ws2016tp3_sysprepped.vhdx',
     [string] $Template = 'WS2K12R2SP1_20150702_sysprepped.vhdx',
